@@ -1,0 +1,132 @@
+/*ESTILOS GERAIS*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    font-family: poppins;
+    background-color: #fffcfc;
+    height: 100vh;
+}
+.interface{
+    max-width: 1280px;
+    margin: 0 auto
+}
+/*ESTILOS GERAIS*/
+/*ESTILOS HEADER*/
+
+header{
+    padding: 30px 4%;
+    
+}
+header >.interface{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a{
+    color: #036635;
+    text-decoration: none;
+    display: inline-block;
+}
+
+header nav ul{
+    list-style-type: none;
+    
+}
+header nav ul li{
+    font-weight: 700;
+    display: inline-block;
+    padding: 0 40px;
+}
+
+header nav a:hover{
+    color:#eac784;
+    transition: 0.3s;
+    transform: scale(1.05);
+}
+header img{
+    height: 128px;
+    width: 128px;
+}
+
+header .btn-contato button{
+    padding: 10px 50px;
+    font-size: 18px;
+    font-weight: 600;
+    color:  #fffcfc;
+    background-color: #0b421a;
+    border-radius: 20px;
+    border: 0;
+    cursor: pointer;
+}
+header .btn-contato button:hover{
+    background-color: #eac784;
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+/*ESTILOS HEADER*/
+
+article{
+    text-align: center;
+}
+.faixam{
+    margin: auto;
+    height: 185px;
+    width: 1440px;
+    background-color: #D4E9E2;
+}
+p {
+    font-family: "poppins", sans-serif;
+    font-style: italic;
+    padding-top: 92.5px;
+    text-align: center;
+}
+
+.maindiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+.maindiv img{
+    margin-top: 6px;
+}
+.blockword{
+    padding: 0px;
+    height: 420px;
+    width: 720px;
+    background-color: #D4E9E2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.blockword p{
+    padding: 0%;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+}
+
+/*ESTILOS BODY*/
+
+#chatbot-container {
+    position: fixed; /* Fixo na tela */
+    bottom: 20px; /* Distância da parte inferior */
+    right: 20px; /* Distância da direita */
+    width: 300px; /* Largura do chatbot */
+    background-color: #fff; /* Cor de fundo */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+    z-index: 1000; /* Posicionar acima de outros elementos */
+  }
+  
+  

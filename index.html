@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <!--Google Fonts-->
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio</title>
+    <style>
+        /* Chatbot Styles */
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            max-width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+        }
+
+        .chatbot-header {
+            background-color: #036635;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .chatbot-messages {
+            background: #f1f1f1;
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            flex: 1;
+        }
+
+        .chatbot-input {
+            display: flex;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        .chatbot-input button {
+            padding: 10px;
+            border: none;
+            background-color: #036635;
+            color: white;
+            cursor: pointer;
+        }
+
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #036635;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .message {
+            margin-bottom: 10px;
+        }
+
+        .message.user {
+            text-align: right;
+        }
+
+        .message.user .message-content {
+            background-color: #036635;
+            color: white;
+        }
+
+        .message .message-content {
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="interface">
+            <div class="logo">
+                <a href="#"><img src="Imagens/catbucks.png" alt="logotipo"></a>
+            </div><!--Logotipo Fechamento-->
+
+         
+        <nav class="Menu-desktop">
+            <ul>
+                <a href="#"><li>inicio</li></a>       
+                <a href="#"><li>cardápio</li></a> 
+                <a href="#"><li>nosso café</li></a> 
+                <a href="#"><li>sobre</li></a> 
+            </ul>
+        
+        </nav> <!--Menu Desktop Fechamento-->
+        <div class="btn-contato">  
+            <button>Contato</button>
+        </div> <!--Botão para contato-->
+    </div> <!--Interface Fechamento-->
+
+    </header> <!--Header Encerramento-->
+   <section>
+       <article>
+           <img src="Imagens/banner_1657816974_desktop.jpg" alt="BannerStarbucks">
+        </article>
+        <div class="faixam">
+            <p>"Desfrute de momentos aromáticos e saboreie o melhor da vida em nossa charmosa cafeteria, onde cada xícara é uma história <br>                                          e cada aroma, uma memória."</p>
+        </div>
+        <div class="maindiv">
+            <div>
+                <img src="Imagens/15170_SBUX_REW_BANNERS3MAIO-02.png" alt="cafe">
+            </div>
+            <div class="blockword">
+                <p>""Os melhores cafés do Brasil"</p>
+            </div>
+        </div>
+        <div class="maindiv">
+            <div class="img">
+                    <img src="Imagens/team.jpg" alt="cafe" width="720" height="420">
+            </div>
+            <div class="blockword">
+                <p>Uma equipe unida para trazer o melhor pros nossos clientes</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot HTML -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            Gato Estagiário
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="message">
+                <div class="message-content">Olá! Como posso ajudar você hoje?</div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Digite sua mensagem...">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
+
+    <!-- Chatbot Script -->
+    <script>
+        function toggleChatbot() {
+            var chatbot = document.getElementById('chatbot');
+            if (chatbot.style.display === 'none' || chatbot.style.display === '') {
+                chatbot.style.display = 'flex';
+                showOptions();
+            } else {
+                chatbot.style.display = 'none';
+            }
+        }
+
+        function sendMessage() {
+            var input = document.getElementById('chatbot-input');
+            var messages = document.getElementById('chatbot-messages');
+
+            if (input.value.trim() !== '') {
+                var userMessage = document.createElement('div');
+                userMessage.classList.add('message', 'user');
+                userMessage.innerHTML = '<div class="message-content">' + input.value + '</div>';
+                messages.appendChild(userMessage);
+                input.value = '';
+
+                setTimeout(function() {
+                    var botMessage = document.createElement('div');
+                    botMessage.classList.add('message');
+                    botMessage.innerHTML = '<div class="message-content">' + getBotResponse(userMessage.textContent) + '</div>';
+                    messages.appendChild(botMessage);
+                    messages.scrollTop = messages.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        function showOptions() {
+            var messages = document.getElementById('chatbot-messages');
+            var optionsMessage = document.createElement('div');
+            optionsMessage.classList.add('message');
+            optionsMessage.innerHTML = '<div class="message-content">Você pode perguntar:<br>- Qual o horário de funcionamento?<br>- Quais são os cafés mais populares?<br>- Onde estamos localizados?<br>- Como posso entrar em contato?</div>';
+            messages.appendChild(optionsMessage);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function getBotResponse(message) {
+            var response = '';
+            switch (message.toLowerCase()) {
+                case 'qual o horário de funcionamento?':
+                    response = 'Nosso horário de funcionamento é: 07h - 19h de segunda a sexta, 15h - 22h sábado e domingo.';
+                    break;
+                case 'quais são os cafés mais populares?':
+                    response = 'Os cafés mais populares são os Miaushakes, Cappuxxino e Café de Ronronado Expresso.';
+                    break;
+                case 'onde estamos localizados?':
+                    response = 'Estamos localizados no iFood para pedidos e na Rua Piracema, 41.';
+                    break;
+                case 'como posso entrar em contato?':
+                    response = 'Você pode entrar em contato pelo fone 9999-9999.';
+                    break;
+                default:
+                    response = 'Desculpe, ainda estou aprendendo. Por favor, pergunte outra coisa!';
+            }
+            return response;
+        }
+    </script>
+</body>
+</html>
